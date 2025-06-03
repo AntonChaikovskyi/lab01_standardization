@@ -1,6 +1,5 @@
 import {Logo, Search} from "../../assets/icons/icon.tsx";
 import Button from "../common/button.tsx";
-import {useNavigate} from "react-router-dom";
 import Input from "../common/input.tsx";
 
 const navItems = [
@@ -9,8 +8,11 @@ const navItems = [
     {name:'Swap', link: ''},
 ]
 
-const Header = () => {
-    const navigate = useNavigate();
+type HeaderProps = {
+    onOpenDialog: () => void;
+};
+
+const Header = ({ onOpenDialog }: HeaderProps) => {
 
     return (
         <div className='flex justify-between items-center px-10 py-5 sticky top-0 w-full z-50 bg-[var(--wui-color-modal-bg-base)]  border-b  border-b-white '>
@@ -30,7 +32,7 @@ const Header = () => {
                 </li>
                 ))}
             </ul>
-            <Button onClick={() => navigate('/rankings')}>Create Account</Button>
+            <Button onClick={onOpenDialog}>Create Account</Button>
         </div>
     );
 };
