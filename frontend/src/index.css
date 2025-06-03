@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+    --bg-color: #131313;
+}
+
+@font-face {
+    font-family: 'UniqueFont';
+    src: url('/src/assets/fonts/Unique-Bold.otf') format('woff2'),
+    url('/src/assets/fonts/Unique-Bold.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bicyclette-Black';
+    src: url('/src/assets/fonts/Bicyclette-Black.woff') format('woff'),
+    url('/src/assets/fonts/Bicyclette-Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
