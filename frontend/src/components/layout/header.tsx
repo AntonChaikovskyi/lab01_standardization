@@ -1,5 +1,5 @@
 import {Logo} from "../../assets/icons/icon.tsx";
-import Button from "../ui/button.tsx";
+import Button from "../common/button.tsx";
 
 const navItems = [
     {name:'Market', link: ''},
