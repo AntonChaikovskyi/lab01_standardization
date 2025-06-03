@@ -1,6 +1,7 @@
-import {Logo} from "../../assets/icons/icon.tsx";
+import {Logo, Search} from "../../assets/icons/icon.tsx";
 import Button from "../common/button.tsx";
 import {useNavigate} from "react-router-dom";
+import Input from "../common/input.tsx";
 
 const navItems = [
     {name:'Market', link: ''},
@@ -18,7 +19,9 @@ const Header = () => {
                 <h1 className='text-[var(--w3m-default)] font-[Bicyclette] font-black text-xl'>xXing</h1>
             </div>
 
-            input
+            <Input placeholder='Search here' icon={  <div className="ml-2 text-[var(--wui-color-fg-150)] scale-75">
+                <Search />
+            </div>} />
 
             <ul className='flex gap-10'>
                 {navItems.map(item => (
