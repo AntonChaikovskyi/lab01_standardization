@@ -1,5 +1,6 @@
 import {Logo} from "../../assets/icons/icon.tsx";
 import Button from "../common/button.tsx";
+import {useNavigate} from "react-router-dom";
 
 const navItems = [
     {name:'Market', link: ''},
@@ -8,6 +9,8 @@ const navItems = [
 ]
 
 const Header = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='flex justify-between items-center px-10 py-5 sticky top-0 w-full z-50 bg-[var(--wui-color-modal-bg-base)] border-b-white border-[1px]'>
             <div className='flex gap-1 items-center justify-center'>
@@ -24,7 +27,7 @@ const Header = () => {
                 </li>
                 ))}
             </ul>
-            <Button>Create Account</Button>
+            <Button onClick={() => navigate('/rankings')}>Create Account</Button>
         </div>
     );
 };

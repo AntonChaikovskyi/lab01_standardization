@@ -1,6 +1,7 @@
 import {HeroArm, HeroLegs} from "../../assets/icons/hero.tsx";
 import Button from "../common/button.tsx";
 import {Arrow} from "../../assets/icons/icon.tsx";
+import {useNavigate} from "react-router-dom";
 
 const RoundedArrow = () => {
     return (
@@ -11,11 +12,15 @@ const RoundedArrow = () => {
 }
 
 const MarketBanner = () => {
+    const navigate = useNavigate();
+
     return (
         <div
             className='relative min-h-96 w-full flex flex-col justify-center items-center bg-white'>
             <div className='mt-32'>
-                <Button additionalItem={<RoundedArrow/>}
+                <Button
+                    onClick={() => navigate('/rankings')}
+                    additionalItem={<RoundedArrow/>}
                         className='text-5xl py-5 px-7 rounded-full gap-4'>Explore</Button>
             </div>
             <h1 className='font-[UniqueFont] text-[450px] text-[var(--w3m-accent)] m-0 leading-none'>MARKET</h1>

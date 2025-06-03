@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom';
-import {Home, Profile, Rankings, Nft} from "./pages";
+import {Home, Profile, Market, Nft} from "./pages";
 import Header from "./components/layout/header.tsx";
 import Footer from "./components/layout/footer.tsx";
 
@@ -12,7 +12,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/nft" element={<Nft/>}/>
-                <Route path="/rankings" element={<Rankings/>}/>
+                <Route path="/rankings" element={<Market/>}/>
             </Routes>
             <Footer />
         </>
