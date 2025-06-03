@@ -1,13 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
     --bg-color: #131313;
     --color-toxic: #DAFE86;
-    --color-purple:#ba8fff;
-    --color-orange:#ffbd80;
+    --color-purple: #ba8fff;
+    --color-orange: #ffbd80;
     --w3m-color-mix: #fff;
     --w3m-accent: hsla(230, 100%, 67%, 1);
     --w3m-default: #fff;
@@ -86,6 +88,16 @@
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url('/src/assets/fonts/Orbitron-VariableFont_wght.ttf') format('woff2'),
+    url('/src/assets/fonts/Orbitron-VariableFont_wght.ttf') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
@@ -195,11 +207,12 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
     }
 }
 

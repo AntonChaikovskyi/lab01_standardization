@@ -2,6 +2,7 @@ import {useState} from "react";
 import Button from "../components/common/button.tsx";
 import RankingsBanner from "../components/other/market/rankings-banner.tsx";
 import CollectionBanner from "../components/other/market/collection-banner.tsx";
+import HotNfts from "@/components/other/market/hot- nfts.tsx";
 
 export const Market = () => {
     const [selectedSection, setSelectedSection] = useState<'rankings' | 'collections' | 'hot'>('rankings')
@@ -39,7 +40,13 @@ export const Market = () => {
             {selectedSection === 'collections' &&
 			        <CollectionBanner />
             }
-            <div className='w-full h-[1px] bg-white'/>
+            {selectedSection === 'hot' &&
+              <>
+	              <div className='w-full h-[1px] mb-4 bg-white'/>
+			        <HotNfts />
+              </>
+            }
+
 
             <div
                 className='h-20 w-full rounded-full absolute -bottom-10 bg-[var(--wui-color-modal-bg-base)]'/>

@@ -13,7 +13,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='flex justify-between items-center px-10 py-5 sticky top-0 w-full z-50 bg-[var(--wui-color-modal-bg-base)] border-b-white border-[1px]'>
+        <div className='flex justify-between items-center px-10 py-5 sticky top-0 w-full z-50 bg-[var(--wui-color-modal-bg-base)]  border-b  border-b-white '>
             <div className='flex gap-1 items-center justify-center'>
                 <Logo />
                 <h1 className='text-[var(--w3m-default)] font-[Bicyclette] font-black text-xl'>xXing</h1>

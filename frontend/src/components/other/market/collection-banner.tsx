@@ -1,4 +1,5 @@
 import Filter from "./filter/filter.tsx";
+import NftList from "@/components/other/market/nft-list.tsx";
 
 const CollectionBanner = () => {
     return (
@@ -7,8 +8,7 @@ const CollectionBanner = () => {
                <Filter />
             </div>
             <div className='flex-2'>
-                <div className='bg-white w-full h-11' />
-
+                <NftList />
             </div>
 
         </div>
