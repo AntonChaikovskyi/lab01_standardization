@@ -1,11 +1,12 @@
 import { motion } from 'motion/react';
+import type {nftType} from "@/components/other/market/nft-list.tsx";
 
-interface NFTCardProps {
-    img: string;
+interface NFTCardProps extends nftType{
     size?: 's' | 'm' | 'l';
+
 }
 
-export const NFTCard = ({ img, size = 'l' }: NFTCardProps) => {
+export const NFTCard = ({  size = 'l', imgUri, name, price, id }: NFTCardProps) => {
 
     const sizeClasses = {
         s: {
@@ -35,7 +36,7 @@ export const NFTCard = ({ img, size = 'l' }: NFTCardProps) => {
     };
 
     return (
-        <a href="/nft/3241">
+        <a href={`/nft?id=${id}`}>
             <motion.div
                 whileHover={{ y: -20 }}
                 className={`group relative ${sizeClasses[size].card} flex justify-center items-center rounded-lg border border-white/40 overflow-hidden`}
@@ -51,18 +52,18 @@ export const NFTCard = ({ img, size = 'l' }: NFTCardProps) => {
 
                 <div className={`relative  border-white bg-black rounded-lg ${sizeClasses[size].imageContainer}`}>
                     <div className="aspect-square border-b-4 border-white rounded-lg">
-                        <img src={img} alt="NFT Preview" className="w-full h-full object-cover" />
+                        <img src={imgUri} alt="NFT Preview" className="w-full h-full object-cover" />
                     </div>
                     <div className="px-4 py-3 text-white orbitron_font">
                         <div className="flex justify-between">
-                            <h2 className={`${sizeClasses[size].title} font-[Orbitron] font-bold`}>NFT NAME</h2>
-                            <h2 className={`${sizeClasses[size].title} font-[Orbitron] font-bold`}>#2314</h2>
+                            <h2 className={`${sizeClasses[size].title} font-[Orbitron] font-bold`}>{name}</h2>
+                            <h2 className={`${sizeClasses[size].title} font-[Orbitron] font-bold`}>#{Math.random().toFixed(3)}</h2>
                         </div>
                         <p className={`${sizeClasses[size].subtitle} montserrat-font opacity-75 font-[Bicyclette]`}>Collection Name © 2022</p>
                         <div className={`flex justify-between pb-2 ${sizeClasses[size].title}`}>
                             <div className="flex gap-2 items-center">
                                 <img src="/ethereum.svg" alt="ethereum-icon" />
-                                <p className='font-[Orbitron]'>0,021</p>
+                                <p className='font-[Orbitron]'>{price}</p>
                             </div>
 
                         </div>
