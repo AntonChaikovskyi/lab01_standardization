@@ -1,11 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import Input from "@/components/common/input.tsx";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
+
 
 const SignupForm = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [username, setUsername] = useState<string>("");
+    const navigate = useNavigate();
 
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -30,10 +34,16 @@ const SignupForm = () => {
             );
 
             setSuccess("signup success");
-            localStorage.setItem("token", response.data.token);
-
+            if (Cookies.get("user_cookie_consent") === "true") {
+                Cookies.set("token", response.data.token, {
+                    expires: 7,
+                    secure: true,
+                    sameSite: "Lax",
+                });
+            }
             setEmail("");
             setPassword("");
+            navigate("/");
             setUsername("");
         } catch (err: any) {
             if (err.response && err.response.data && err.response.data.error) {
