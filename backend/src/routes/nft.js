@@ -6,13 +6,24 @@ import User from '../models/user.js';
 const nftRouter = Router();
 
 /**
- * @api {get} /api/nfts Get all NFTs
- * @apiName GetNFTs
- * @apiGroup NFTs
- * @apiSuccess {Object[]} data List of NFTs
- * @apiError (500) InternalServerError Internal Server Error
+ * @swagger
+ * /nft:
+ *   get:
+ *     summary: Get all NFTs
+ *     tags: [NFT]
+ *     responses:
+ *       200:
+ *         description: List of NFTs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
  */
-
 nftRouter.get('/', async (req, res) => {
 	try{
 		const nft = await Nft.find({});
