@@ -1,0 +1,11 @@
+{
+  "name": "NFT API",
+  "version": "1.0.0",
+  "description": "Documentation for NFT Express API",
+  "title": "NFT API Docs",
+  "url": "http://localhost:3000/api",
+  "template": {
+    "withCompare": false,
+    "withGenerator": false
+  }
+}

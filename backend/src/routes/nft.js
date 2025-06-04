@@ -5,6 +5,14 @@ import User from '../models/user.js';
 
 const nftRouter = Router();
 
+/**
+ * @api {get} /api/nfts Get all NFTs
+ * @apiName GetNFTs
+ * @apiGroup NFTs
+ * @apiSuccess {Object[]} data List of NFTs
+ * @apiError (500) InternalServerError Internal Server Error
+ */
+
 nftRouter.get('/', async (req, res) => {
 	try{
 		const nft = await Nft.find({});
@@ -16,6 +24,15 @@ nftRouter.get('/', async (req, res) => {
 })
 
 
+/**
+ * @api {get} /api/nfts/owned Get user's owned NFTs
+ * @apiName GetOwnedNFTs
+ * @apiGroup NFTs
+ * @apiHeader {String} Authorization Bearer token.
+ * @apiSuccess {Object[]} data List of NFTs owned by the user
+ * @apiError (401) Unauthorized Missing or invalid token
+ * @apiError (500) InternalServerError Internal Server Error
+ */
 nftRouter.get('/owned', authMiddleware, async (req, res) => {
 	try {
 		const userId = req.userId;
@@ -38,6 +55,16 @@ nftRouter.get('/owned', authMiddleware, async (req, res) => {
 	}
 });
 
+
+/**
+ * @api {get} /api/nfts/:id Get NFT by ID
+ * @apiName GetNFTById
+ * @apiGroup NFTs
+ * @apiParam {String} id NFT unique ID
+ * @apiSuccess {Object} data NFT details
+ * @apiError (404) NotFound NFT not found
+ * @apiError (500) InternalServerError Internal Server Error
+ */
 nftRouter.get('/:id', async (req, res) => {
 	try {
 		const nft = await Nft.findById(req.params.id);
@@ -51,7 +78,18 @@ nftRouter.get('/:id', async (req, res) => {
 	}
 });
 
-
+/**
+ * @api {post} /api/nfts/:id/purchase Purchase NFT
+ * @apiName PurchaseNFT
+ * @apiGroup NFTs
+ * @apiHeader {String} Authorization Bearer token.
+ * @apiParam {String} id NFT unique ID
+ * @apiSuccess {String} message NFT successfully purchased
+ * @apiSuccess {Object[]} purchasedNfts List of purchased NFT IDs
+ * @apiError (400) AlreadyPurchased NFT already purchased
+ * @apiError (404) NotFound NFT or user not found
+ * @apiError (500) InternalServerError Internal Server Error
+ */
 nftRouter.post('/:id/purchase', authMiddleware, async (req, res) => {
 	try {
 		const nftId = req.params.id;

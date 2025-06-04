@@ -6,6 +6,14 @@ import bcrypt from "bcryptjs";
 
 const userRouter = Router();
 
+/**
+ * @api {get} /api/users Get all users
+ * @apiName GetUsers
+ * @apiGroup Users
+ * @apiSuccess {Object[]} data List of users
+ * @apiError (500) InternalServerError Internal Server Error
+ */
+
 userRouter.get('/', async (req, res) => {
 	try{
 		const users = await User.find({});
@@ -16,6 +24,19 @@ userRouter.get('/', async (req, res) => {
 	}
 })
 
+/**
+ * @api {post} /api/users/signup User signup
+ * @apiName Signup
+ * @apiGroup Users
+ * @apiBody {String} email User email
+ * @apiBody {String} password User password
+ * @apiBody {String} username Display name
+ * @apiSuccess {String} message Success message
+ * @apiSuccess {Object} user Created user info
+ * @apiSuccess {String} token JWT token
+ * @apiError (400) UserExists User already exists
+ * @apiError (500) InternalServerError Internal Server Error
+ */
 userRouter.post('/signup', async (req, res) => {
 	try {
 		const { email, password, username } = req.body;
@@ -57,6 +78,19 @@ userRouter.post('/signup', async (req, res) => {
 	}
 });
 
+
+/**
+ * @api {post} /api/users/signin User signin
+ * @apiName Signin
+ * @apiGroup Users
+ * @apiBody {String} email User email
+ * @apiBody {String} password User password
+ * @apiSuccess {String} message Success message
+ * @apiSuccess {Object} user User info
+ * @apiSuccess {String} token JWT token
+ * @apiError (400) InvalidCredentials Invalid email or password
+ * @apiError (500) InternalServerError Internal Server Error
+ */
 userRouter.post('/signin', async (req, res) => {
 	try {
 		const { email, password } = req.body;
